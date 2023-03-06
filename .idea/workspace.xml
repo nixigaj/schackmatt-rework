@@ -7,6 +7,7 @@
     <list default="true" id="4101f899-9f3d-4022-ae3d-18bea28b3655" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/timer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/timer.tsx" afterDir="false" />
     </list>
     <list id="d3bca954-d7b9-47e1-af0a-f0c9c3166d90" name="Changes by Erik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678134964691</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge upsteream">
+      <created>1678138434188</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678138434188</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
