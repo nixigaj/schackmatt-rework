@@ -1,4 +1,5 @@
 import './App.css';
+import './popup.css';
 import React, { useState } from 'react';
 import { Chess, Square, Move } from "chess.js";
 import { Chessboard } from "react-chessboard";
@@ -6,6 +7,7 @@ import { Timer } from "./timer"
 import {GameSounds} from "./audio";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Popup from './popup';
 import {root as appRoot} from "./index";
 
 function Example() {
@@ -87,6 +89,20 @@ function App() {
         }
     }
 
+    const [visible, setVisible] = useState(false);
+
+    function showPopup(): void {
+        setVisible(true);
+    };
+
+    function closePopup(): void {
+        setVisible(false);
+    };
+
+    function resignGame(): void {
+        // resign game logic
+    };
+
     return (
         <div id="main-content">
             <div id="headerbar">
@@ -117,11 +133,11 @@ function App() {
             <div id="confirm_Btn" title="Resign?"><div id="myDialogText"></div>
             </div>
 
-            <div id="dialog-confirm" title="You lost - you resigned the game">
 
-
+            <div>
                 <button id="timer_start_Btn">START GAME</button>
-                <button id="resignBtn">RESIGN</button>
+                <button onClick={showPopup}>RESIGN</button>
+                <Popup visible={visible} closePopup={closePopup} resignGame={resignGame} />
                 <button id="startBtn">START POSITION</button>
                 <button id="clearBtn">CLEAR BOARD</button>
             </div>
