@@ -71,14 +71,12 @@ function App() {
     function onDrop(sourceSquare: Square, targetSquare: Square): boolean {
         const gameCopy: Chess = Object.create(game);
         if (makeAMove({ from: sourceSquare, to: targetSquare })) {
-            //makeRandomMove();
+            makeRandomMove();
             audio.playMove()
-            appRoot.render(<Example/>)
             return true;
         } else if (makeAMove({ from: sourceSquare, to: targetSquare, promotion: 'q' })) {
-            //makeRandomMove();
+            makeRandomMove();
             audio.playMove()
-            appRoot.render(<Example/>)
             return true;
         } else {
             return false;
@@ -125,19 +123,18 @@ function App() {
     );
 }
 
-/*
+
 function timer() {
-    let playing = true;
-    let currentPlayer = 1;
+    let currentPlayer: number = 1;
 
-    let starttime = 180;
-    let starttime1 = 180;
+    let starttime: number = 180;
+    let starttime1: number = 180;
 
-    function Playerswap() {
-        if (playing) {
+    function Playerswap(): number {
             return currentPlayer = currentPlayer === 1 ? 2 : 1;
-        }
+
     }
+
 
     document.getElementById("timer_start_Btn").addEventListener("click", function () {
         document.getElementById("timer_start_Btn").style.display = "none";
@@ -239,7 +236,7 @@ function timer() {
         });
     });
 }
-*/
+
 
 
 
