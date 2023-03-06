@@ -73,12 +73,11 @@ function App() {
         if (makeAMove({ from: sourceSquare, to: targetSquare })) {
             //makeRandomMove();
             audio.playMove()
-            appRoot.render(<Example/>)
+
             return true;
         } else if (makeAMove({ from: sourceSquare, to: targetSquare, promotion: 'q' })) {
             //makeRandomMove();
             audio.playMove()
-            appRoot.render(<Example/>)
             return true;
         } else {
             return false;
