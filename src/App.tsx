@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Chess, Square, Move } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { Timer } from "./timer"
@@ -138,7 +138,27 @@ function timer() {
     function Playerswap(): number {
             return currentPlayer = currentPlayer === 1 ? 2 : 1;
 
+
+
     }
+
+    function MyTimer() {
+        const Myref = React.useRef(null);
+            const handleClick = () => {
+                ref.current.style.display = "none";
+
+
+            };
+
+        return ( <div>
+
+            <button ref={Myref}>This is my element.</p>
+         onClick={handleClick}> Make dissapear</button>
+        </div>
+        );
+    }
+
+
 
 
     document.getElementById("timer_start_Btn").addEventListener("click", function () {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4101f899-9f3d-4022-ae3d-18bea28b3655" name="Changes" comment="Merge upsteream">
+    <list default="true" id="4101f899-9f3d-4022-ae3d-18bea28b3655" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
     </list>
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676995322483</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Merge upsteream">
+      <created>1678134964691</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678134964691</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +184,7 @@
     <MESSAGE value="Add chess piece asset license" />
     <MESSAGE value="Update client submodule" />
     <MESSAGE value="Set up package stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up package stuff" />
+    <MESSAGE value="Merge upsteream" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge upsteream" />
   </component>
 </project>
