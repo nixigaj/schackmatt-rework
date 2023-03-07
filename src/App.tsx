@@ -1,11 +1,13 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import './popup.css';
+import React, { useState } from 'react';
 import { Chess, Square, Move } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { Timer } from "./timer"
 import {GameSounds} from "./audio";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Popup from './popup';
 import {root as appRoot} from "./index";
 
 function Example() {
@@ -74,17 +76,32 @@ function App() {
     function onDrop(sourceSquare: Square, targetSquare: Square): boolean {
         const gameCopy: Chess = Object.create(game);
         if (makeAMove({ from: sourceSquare, to: targetSquare })) {
-            makeRandomMove();
+            //makeRandomMove();
             audio.playMove()
+            appRoot.render(<Example/>)
             return true;
         } else if (makeAMove({ from: sourceSquare, to: targetSquare, promotion: 'q' })) {
-            makeRandomMove();
+            //makeRandomMove();
             audio.playMove()
             return true;
         } else {
             return false;
         }
     }
+
+    const [visible, setVisible] = useState(false);
+
+    function showPopup(): void {
+        setVisible(true);
+    };
+
+    function closePopup(): void {
+        setVisible(false);
+    };
+
+    function resignGame(): void {
+        // resign game logic
+    };
 
     return (
         <div id="main-content">
@@ -118,147 +135,15 @@ function App() {
 
             <div id="dialog-confirm" title="You lost - you resigned the game">
 
-
+            <div>
                 <button id="timer_start_Btn">START GAME</button>
-                <button id="resignBtn">RESIGN</button>
+                <button onClick={showPopup}>RESIGN</button>
+                <Popup visible={visible} closePopup={closePopup} resignGame={resignGame} />
                 <button id="startBtn">START POSITION</button>
                 <button id="clearBtn">CLEAR BOARD</button>
             </div>
         </div>
     );
-}
-
-
-function timer() {
-    let currentPlayer: number = 1;
-
-    let starttime: number = 180;
-    let starttime1: number = 180;
-
-    function Playerswap(): number {
-            return currentPlayer = currentPlayer === 1 ? 2 : 1;
-
-
-
-    }
-
-    function MyTimer() {
-        const Myref = React.useRef(null);
-            const handleClick = () => {
-                ref.current.style.display = "none";
-
-
-            };
-
-        return ( <div>
-
-            <button ref={Myref}>This is my element.</p>
-         onClick={handleClick}> Make dissapear</button>
-        </div>
-        );
-    }
-
-
-
-    document.getElementById("timer_start_Btn").addEventListener("click", function () {
-        document.getElementById("timer_start_Btn").style.display = "none";
-
-
-        let timer2 = setInterval(function () {
-            let minutes = Math.floor(starttime / 60);
-            let seconds = starttime % 60;
-            let clocktime = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-
-            let minutes1 = Math.floor(starttime1 / 60);
-            let seconds1 = starttime1 % 60;
-            let clocktime1 = (minutes1 < 10 ? "0" + minutes1 : minutes1) + ":" + (seconds1 < 10 ? "0" + seconds1 : seconds1);
-
-
-            if (currentPlayer === 1) {
-                document.getElementById("timer1").innerHTML = clocktime;
-                starttime = starttime - 1;
-
-                if (starttime <= 30) {
-                    document.getElementById("timer1").style.color = "#CC0000";
-                }
-                if (starttime <= 0) {
-                    clearInterval(timer2);
-                    alert("LOST THE GAME\n You lost on time");
-
-
-                }
-
-            }
-
-            if (currentPlayer === 2) {
-                document.getElementById("timer").innerHTML = clocktime1;
-                starttime1 = starttime1 - 1;
-
-                if (starttime1 <= 30) {
-                    document.getElementById("timer").style.color = "#CC0000";
-                }
-                if (starttime1 <= 0) {
-                    clearInterval(timer2);
-                    alert("LOST THE GAME\n You lost on time");
-
-
-                }
-
-            }
-
-            document.getElementById("resignBtn").addEventListener("click", function () {
-                clearInterval(timer2);
-            });
-
-
-        }, 1000);
-    },)
-
-    document.addEventListener('keyup', event => {
-        if (event.code === 'Space') {
-            Playerswap();
-        }
-    });
-
-    $("#myDialogText").text("Are you sure you want to resign?");
-
-    $( function() {
-        $(document).ready(function() {
-            $("#resignBtn").click(function() {
-                $("#confirm_Btn").dialog({
-                    resizable: false,
-                    height: "auto",
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                        "Cancel": function () {
-                            $(this).dialog("close");
-                        },
-                        "Resign": function () {
-                            $("#confirm_Btn").click(function(){
-                                $("#dialog-confirm").dialog({
-                                    resizable: false,
-                                    height: auto,
-                                    width: 300,
-                                    modal: true,
-                                    buttons: {
-                                        "Play again": function() {
-                                            $(this).dialog("close");
-                                        }
-                                    }
-
-                                });
-                                // Handle resign button click here
-                                $(this).dialog("close");
-
-                            });
-
-                        }
-                    }
-                })
-            });
-        });
-    });
 }
 
 
