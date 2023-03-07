@@ -78,7 +78,7 @@ function App() {
         if (makeAMove({ from: sourceSquare, to: targetSquare })) {
             //makeRandomMove();
             audio.playMove()
-
+            appRoot.render(<Example/>)
             return true;
         } else if (makeAMove({ from: sourceSquare, to: targetSquare, promotion: 'q' })) {
             //makeRandomMove();
@@ -133,6 +133,7 @@ function App() {
             <div id="confirm_Btn" title="Resign?"><div id="myDialogText"></div>
             </div>
 
+            <div id="dialog-confirm" title="You lost - you resigned the game">
 
             <div>
                 <button id="timer_start_Btn">START GAME</button>
@@ -145,121 +146,6 @@ function App() {
     );
 }
 
-/*
-function timer() {
-    let playing = true;
-    let currentPlayer = 1;
-
-    let starttime = 180;
-    let starttime1 = 180;
-
-    function Playerswap() {
-        if (playing) {
-            return currentPlayer = currentPlayer === 1 ? 2 : 1;
-        }
-    }
-
-    document.getElementById("timer_start_Btn").addEventListener("click", function () {
-        document.getElementById("timer_start_Btn").style.display = "none";
-
-
-        let timer2 = setInterval(function () {
-            let minutes = Math.floor(starttime / 60);
-            let seconds = starttime % 60;
-            let clocktime = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-
-            let minutes1 = Math.floor(starttime1 / 60);
-            let seconds1 = starttime1 % 60;
-            let clocktime1 = (minutes1 < 10 ? "0" + minutes1 : minutes1) + ":" + (seconds1 < 10 ? "0" + seconds1 : seconds1);
-
-
-            if (currentPlayer === 1) {
-                document.getElementById("timer1").innerHTML = clocktime;
-                starttime = starttime - 1;
-
-                if (starttime <= 30) {
-                    document.getElementById("timer1").style.color = "#CC0000";
-                }
-                if (starttime <= 0) {
-                    clearInterval(timer2);
-                    alert("LOST THE GAME\n You lost on time");
-
-
-                }
-
-            }
-
-            if (currentPlayer === 2) {
-                document.getElementById("timer").innerHTML = clocktime1;
-                starttime1 = starttime1 - 1;
-
-                if (starttime1 <= 30) {
-                    document.getElementById("timer").style.color = "#CC0000";
-                }
-                if (starttime1 <= 0) {
-                    clearInterval(timer2);
-                    alert("LOST THE GAME\n You lost on time");
-
-
-                }
-
-            }
-
-            document.getElementById("resignBtn").addEventListener("click", function () {
-                clearInterval(timer2);
-            });
-
-
-        }, 1000);
-    },)
-
-    document.addEventListener('keyup', event => {
-        if (event.code === 'Space') {
-            Playerswap();
-        }
-    });
-
-    $("#myDialogText").text("Are you sure you want to resign?");
-
-    $( function() {
-        $(document).ready(function() {
-            $("#resignBtn").click(function() {
-                $("#confirm_Btn").dialog({
-                    resizable: false,
-                    height: "auto",
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                        "Cancel": function () {
-                            $(this).dialog("close");
-                        },
-                        "Resign": function () {
-                            $("#confirm_Btn").click(function(){
-                                $("#dialog-confirm").dialog({
-                                    resizable: false,
-                                    height: auto,
-                                    width: 300,
-                                    modal: true,
-                                    buttons: {
-                                        "Play again": function() {
-                                            $(this).dialog("close");
-                                        }
-                                    }
-
-                                });
-                                // Handle resign button click here
-                                $(this).dialog("close");
-
-                            });
-
-                        }
-                    }
-                })
-            });
-        });
-    });
-}
-*/
 
 
 
